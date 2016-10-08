@@ -29,7 +29,7 @@
                     ng-repeat="service in services" 
                     ng-class="getServiceIconClass(service)" 
                     ng-click="toggleServiceIcon($index)"
-                    src="/assets/img/service_icons/{{service.name}}-colored.png">
+                    ng-src="/assets/img/service_icons/{{service.name}}-colored.png">
             </div>
             <!-- <ion-checkbox class="checkbox-calm" ng-repeat="service in services" ng-model="service.checked">{{service.name}}</ion-checkbox> -->
         </div>
