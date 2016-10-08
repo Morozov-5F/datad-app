@@ -61,17 +61,17 @@ app.config(function($stateProvider, $urlRouterProvider) {
     views: {
       'side-menu21': {
         templateUrl: 'templates/searchResults.html',
-        // controller: 'searchResultsCtrl'
+        controller: 'SearchResultsController'
       }
     }
   })
 
-  .state('menu.information', {
-    url: '/advanced_info',
+  .state('menu.serviceDetails', {
+    url: '/details?id',
     views: {
       'side-menu21': {
-        templateUrl: 'templates/information.html',
-        // controller: 'informationCtrl'
+        templateUrl: 'templates/serviceDetails.html',
+        controller: 'ServiceDetailsController'
       }
     }
   })
