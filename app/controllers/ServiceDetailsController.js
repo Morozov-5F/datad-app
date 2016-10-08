@@ -10,6 +10,6 @@ app.controller('ServiceDetailsController', function ($scope, $stateParams) {
         subscribers: '120k',
         posts: '1k',
         price: 600,
-        service: 'Youtube',
+        service: 'Youtube'
     };
 });
