@@ -3,7 +3,7 @@
         <div class="item item-divider item-borderless header-transparent">
             Select category
         </div>
-        <label class="item item-select" id="simpleSearch-select1">
+        <label class="item item-input item-select" id="simpleSearch-select1">
             <span class="input-label">Category</span>
             <select ng-model="searchFields.category">
                 <option ng-repeat="category in categories">{{ category.name }}</option>
@@ -15,8 +15,8 @@
         </div>
         <div class="item range range-calm">
             <input type="range" name="price" step="100" min="0" max="10000" ng-model="searchFields.price">
-            <div class="col col-20">
-                <p>{{ searchFields.price }}</p>
+            <div class="col col-25">
+                <p>{{ searchFields.price }}₽</p>
             </div>
         </div>
         <br>

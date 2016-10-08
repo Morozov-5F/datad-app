@@ -1,9 +1,26 @@
-<ion-view title="Information" id="page5">
+<ion-view title="{{ profile.nickname }}" id="page5">
     <ion-content padding="true" class="has-header">
-        <a class="item item-thumbnail-right" href="#">
-            <img src="https://unsplash.it/200/300/?random">
-            <h2>Type: YouTube channel</h2>
-            <p>Dunno</p>
-        </a>    
+        <div class="card">
+            <div class="item item-avatar">
+                <img ng-src="{{ profile.img }}">
+                <h2>{{ profile.nickname }}</h2>
+                <p>{{ profile.service }} profile</p>
+            </div>
+            <div class="item item-text-wrap item-borderless">
+                {{ profile.description }}
+            </div>
+        </div>    
+        <div class="card">
+            <div class="row row-center">
+                <div class="col center">
+                    <p>Subscribers</p>
+                    <h3> {{profile.subscribers}} </h3>
+                </div>
+                <div class="col center">
+                    <p>Posts</p>
+                    <h3> {{profile.posts}} </h3>
+                </div>
+            </div>
+        </div>
     </ion-content>
 </ion-view>
