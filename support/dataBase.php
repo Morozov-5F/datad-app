@@ -23,6 +23,7 @@ function query($q) {
 
 function select($q) {
 	$r = query($q);
+	$e = [];
 	while($row = $r->fetch_array(MYSQLI_ASSOC))
 		$e[] = $row;
 		
