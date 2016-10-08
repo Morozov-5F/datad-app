@@ -1,5 +1,9 @@
 /* Custom styles */
 
+.header-transparent {
+    background: none;
+}
+
 .service-icon-small {
     width: 25px;
     display: inline;
