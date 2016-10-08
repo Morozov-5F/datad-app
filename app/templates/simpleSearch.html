@@ -1,19 +1,34 @@
 <ion-view title="Simple search" id="page1">
-    <ion-content padding="true" class="has-header">
-        <form id="simpleSearch-form1" class="list">
-            <label class="item item-select" id="simpleSearch-select1">
-                <span class="input-label">Category</span>
-                <select>
-                    <option>Games</option>
-                    <option>Software</option>
-                    <option>Clothes</option>
-                    <option>Food</option>
-                </select>
-            </label>
-        </form>
-            <!--<button class="button button-clear" ui-sref="menu.searchResults" id="simpleSearch-button2">Search</a>-->
+    <ion-content padding="true" class="has-header" scroll="false">
+        <!--<div class="spacer" style="width: 300px; height: 102px;"></div>-->
+        <div class="item item-divider item-borderless header-transparent">
+            Select category
+        </div>
+        <label class="item item-select" id="simpleSearch-select1">
+            <span class="input-label">Category</span>
+            <select>
+                <option ng-repeat="<categor></categor>y in categories">{{ category.name }}</option>
+            </select>
+        </label>
+        <div class="item item-divider item-borderless header-transparent">
+            Maximum Price
+        </div>
+        <div class="item range range-calm">
+            <input type="range" name="price" step="100" min="0" max="10000" ng-model="price">
+            <div class="col col-20">
+                <p>{{ price }}</p>
+            </div>
+        </div>
+        <div class="item item-divider item-borderless header-transparent">
+            Services
+        </div>
+        <ion-list>
+            <ion-checkbox class="checkbox-calm" ng-model="vkChecked">VK</ion-checkbox>
+            <ion-checkbox class="checkbox-calm" ng-model="youtubeChecked">YouTube</ion-checkbox>
+        </ion-list>
+
     </ion-content>
-    <div class="bar bar-footer button-full bar-balanced">
+    <div class="bar bar-footer button-full bar-calm">
         <button class="button button-clear" ui-sref="menu.searchResults" id="simpleSearch-button2">Search</button>
     </div>
 </ion-view>

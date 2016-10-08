@@ -25,7 +25,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
     views: {
       'side-menu21': {
         templateUrl: 'templates/simpleSearch.html',
-        // controller: 'simpleSearchCtrl'
+        controller: 'SimpleSearchController'
       }
     }
   })
