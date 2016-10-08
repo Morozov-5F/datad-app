@@ -34,5 +34,5 @@ app.controller('SearchResultsController', function ($scope, $stateParams) {
         }                          
     ];
 
-    $scope.getServiceIconPath = (service, size) => 'assets/img/service_icons/' + service + '-64.png';
+    $scope.getServiceIconPath = (service, size) => 'assets/img/service_icons/' + service + '-colored.png';
 });

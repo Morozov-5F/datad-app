@@ -1,13 +1,10 @@
 <ion-view title="Found {{searchResults.length}} targets" id="page4">   
     <ion-content padding="true" class="has-header">
         <ion-list>
-            <ion-item ng-repeat="item in searchResults" class="item item-thumbnail-left" ui-sref="menu.serviceDetails({id: item.id})">
-                <img src="https://unsplash.it/200/300/?random">
+            <ion-item ng-repeat="item in searchResults" class="item item-avatar" ui-sref="menu.serviceDetails({id: item.id})">
+                <img style="border-radius: 0px;" src="{{getServiceIconPath(item.service)}}">
                 <h2 ng-bind="item.name"></h2>
-                <p ng-bind="item.description"></p> 
-                <!-- Иконка сервиса -->      
-                <img class="service-icon-small" ng-src="{{getServiceIconPath(item.service)}}">          
-                <p><span ng-bind="item.price"></span></p>      
+                <p>Avg. price: <span class="positive"  ng-bind="item.price"></span></p>      
             </ion-item>
         </ion-list>
     </ion-content>
