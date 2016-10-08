@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.ionicframework.ionicboilerplate713465" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>ionic-boilerplate</name>
+    <name>DatAd</name>
     <description>
-        An Ionic Framework and Cordova project.
+        Software advertising platform
     </description>
     <author email="bredikhin.nikita@gmail.com" href="http://example.com.com/">
-        Nikita Bredikhin
+        DatAd team
     </author>
     <content src="index.html" />
     <access origin="*" />
