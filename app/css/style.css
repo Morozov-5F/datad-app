@@ -4,9 +4,31 @@
     background: none;
 }
 
-.service-icon-small {
-    width: 25px;
+/*.search-bar-footer {
+    height: 60px;
+}
+*/
+.search-service-icon-unchecked {
+    opacity: 0.25;
+    transition: opacity .25s ease-in-out;
+}
+
+.search-service-icon-checked {
+    opacity: 1;
+    transition: opacity .25s ease-in-out;
+}
+
+.search-service-icon {
+    width: 90px;
     display: inline;
+    padding: 14px;
+}
+
+.search-icons-wrapper {
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, 0%);
+    position: relative
 }
 
 .details-large-avatar {

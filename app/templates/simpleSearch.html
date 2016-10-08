@@ -9,8 +9,9 @@
                 <option ng-repeat="category in categories">{{ category.name }}</option>
             </select>
         </label>
+        <br>
         <div class="item item-divider item-borderless header-transparent">
-            Maximum Price
+            Choose maximum price
         </div>
         <div class="item range range-calm">
             <input type="range" name="price" step="100" min="0" max="10000" ng-model="searchFields.price">
@@ -18,14 +19,22 @@
                 <p>{{ searchFields.price }}</p>
             </div>
         </div>
+        <br>
         <div class="item item-divider item-borderless header-transparent">
-            Services
+            Pick services
         </div>
-        <ion-list>
-            <ion-checkbox class="checkbox-calm" ng-repeat="service in services" ng-model="service.checked">{{service.name}}</ion-checkbox>
-        </ion-list>
+        <div class="item range range-calm">
+            <div class="search-icons-wrapper">
+                <img 
+                    ng-repeat="service in services" 
+                    ng-class="getServiceIconClass(service)" 
+                    ng-click="toggleServiceIcon($index)"
+                    src="/assets/img/service_icons/{{service.name}}-colored.png">
+            </div>
+            <!-- <ion-checkbox class="checkbox-calm" ng-repeat="service in services" ng-model="service.checked">{{service.name}}</ion-checkbox> -->
+        </div>
     </ion-content>
-    <div class="bar bar-footer button-full bar-calm">
+    <div class="bar bar-footer button-full bar-calm search-bar-footer">
         <button class="button button-clear" ui-sref="menu.searchResults({fields:getFieldsString()})" id="simpleSearch-button2">Search</button>
     </div>
 </ion-view>

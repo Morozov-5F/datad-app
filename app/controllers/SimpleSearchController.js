@@ -17,13 +17,17 @@ app.controller('SimpleSearchController', function ($scope, $log) {
     ];
     $scope.services =  [
         {
-            name: "VK",
+            name: "vk",
             checked: true,
         },
         {
-            name: "YouTube",
+            name: "youtube",
             checked: true,
         },
+        {
+            name: "instagram",
+            checked: false,
+        }        
     ];
     $scope.searchFields = {
         price: 1000,
@@ -39,4 +43,17 @@ app.controller('SimpleSearchController', function ($scope, $log) {
         });
     }, true);
     $scope.getFieldsString = () => JSON.stringify($scope.searchFields);
+    $scope.getServiceIconClass = (service) => {
+        let classes = ['search-service-icon'];
+        if (service.checked)
+            classes.push('search-service-icon-checked')
+        else
+            classes.push('search-service-icon-unchecked')
+
+        return classes;
+    };
+    $scope.toggleServiceIcon = (index) => {
+        $scope.services[index].checked = !$scope.services[index].checked;
+
+    };
 });
