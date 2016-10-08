@@ -16,7 +16,7 @@
         <div class="item range range-calm">
             <input type="range" name="price" step="100" min="0" max="10000" ng-model="searchFields.price">
             <div class="col col-25">
-                <p>{{ searchFields.price }}₽</p>
+                <p>${{ searchFields.price }}</p>
             </div>
         </div>
         <br>
@@ -33,7 +33,7 @@
             </div>
         </div>
     </ion-content>
-    <div class="bar bar-footer button-full bar-calm search-bar-footer">
-        <button class="button button-clear search-button" ui-sref="menu.searchResults({fields:getFieldsString()})" id="simpleSearch-button2">Search</button>
+    <div class="bar bar-footer bar-light search-bar-footer item-borderless">
+        <button style="font-size: 18pt;" class="button button-block button-calm search-button" ui-sref="menu.searchResults({fields:getFieldsString()})" id="simpleSearch-button2">Search</button>
     </div>
 </ion-view>
