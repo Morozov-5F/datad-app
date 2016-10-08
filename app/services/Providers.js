@@ -34,7 +34,7 @@ app.factory('Providers', function ($http, $q, Users) {
         servicesArray.sort();
         delete params.services;
         params.socialID = servicesArray.join(',');
-        
+
         return $http({
             url: 'http://nk5.ru/api/providers.search',
             method: 'GET',
@@ -54,12 +54,13 @@ app.factory('Providers', function ($http, $q, Users) {
             headers: {
                 'X-Access-Token': token
             },
-            params: searchParams
+            params: { ids: id }
         });          
     };
 
     return {
         get,
-        search
+        search,
+        getByID
     };
 });

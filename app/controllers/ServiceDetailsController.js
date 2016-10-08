@@ -1,13 +1,18 @@
 const app = angular.module('app');
 
-app.controller('ServiceDetailsController', function ($scope, $stateParams) {
-    $scope.profile = {
-        nickname: 'SomeYouTubeChannel',
-        img: 'https://unsplash.it/200/300/?random',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sem augue, laoreet ut lorem ut, malesuada ultricies sapien.',
-        subscribers: '120k',
-        posts: '1k',
-        price: 600,
-        service: 'Youtube'
-    };
+app.controller('ServiceDetailsController', function ($scope, $stateParams, Providers) {
+    Providers.getByID($stateParams.id)
+        .then((result) => {
+            console.log(result.data.users[0]);
+            if (result.data && result.data.users && result.data.users[0])
+                $scope.profile = result.data.users[0];
+        });
+    $scope.profile = {};
+
+    let socialNames = [
+        'YouTube channel',
+        'VK community',
+        'Instagram profile'        
+    ];
+    $scope.getSocialName = (id) => socialNames[parseInt(id) - 1];
 });
