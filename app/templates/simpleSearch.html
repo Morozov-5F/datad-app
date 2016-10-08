@@ -6,7 +6,7 @@
         <label class="item item-input item-select" id="simpleSearch-select1">
             <span class="input-label">Category</span>
             <select ng-model="searchFields.category">
-                <option ng-repeat="category in categories">{{ category.name }}</option>
+                <option value={{category.id}} ng-repeat="category in categories">{{ category.name }}</option>
             </select>
         </label>
         <br>

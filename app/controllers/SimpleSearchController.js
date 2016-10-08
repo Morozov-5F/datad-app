@@ -1,31 +1,11 @@
 const app = angular.module('app');
 
-app.controller('SimpleSearchController', function ($scope, $log, Users) {
-    // Users.login('bredikhin.nikita@sas.pisas', '1234567')
-        
-    //     .then((result) => {
-    //         console.log('Login success');
-
-    //         return Users.get();
-    //     })
-
-    //     .then((result) => {
-    //         console.log(result);
-    //     });
-    $scope.categories = [
-        {
-            name : "Gaming"
-        },
-        {
-            name : "Tech"
-        },
-        {
-            name : "Cooking & Health"
-        },
-        {
-            name : "Beauty & Fashion"
-        },
-    ];
+app.controller('SimpleSearchController', function ($scope, $log, Categories) {
+    Categories.get()
+        .then((result) => {            
+            $scope.categories = result.data.categories;
+        });    
+    $scope.categories = [];
     $scope.services =  [
         {
             name: "vk",
@@ -43,8 +23,8 @@ app.controller('SimpleSearchController', function ($scope, $log, Users) {
     $scope.searchFields = {
         price: 1000,
         services: [],
-        category: $scope.categories[0].name
-    };
+        category: '1'
+    };    
     $scope.$watch('services', () => {
         $scope.searchFields.services = [];
         angular.forEach($scope.services, (value, key) => {
@@ -53,7 +33,10 @@ app.controller('SimpleSearchController', function ($scope, $log, Users) {
             }
         });
     }, true);
-    $scope.getFieldsString = () => JSON.stringify($scope.searchFields);
+    $scope.getFieldsString = () => {
+        return JSON.stringify($scope.searchFields);
+    };
+
     $scope.getServiceIconClass = (service) => {
         let classes = ['search-service-icon'];
         if (service.checked)

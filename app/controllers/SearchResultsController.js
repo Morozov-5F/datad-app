@@ -7,14 +7,15 @@ app.controller('SearchResultsController', function ($scope, $stateParams, Servic
     } catch (e) {
         console.log(e);
     }
-
     const serviceNames = [
         'youtube',
         'vk',
         'instagram'
     ];
-    Providers.get(searchParams)
+    
+    Providers.search(searchParams)
         .then((result) => $scope.searchResults = result.data.users)
+        .catch((error) => console.log(error))
         .finally(() => $scope.loading = false);
 
     let randomPrice = () => (Math.floor(Math.random() * 120) + 25) * 10;

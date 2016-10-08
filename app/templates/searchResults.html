@@ -1,6 +1,6 @@
 <ion-view title="Found {{searchResults.length}} targets" id="page4">   
     <ion-content padding="true" class="has-header">
-        <ion-spinner class="spinner-center" ng-show="loading" icon="ios"></ion-spinner>        
+        <ion-spinner class="spinner-center" ng-show="loading" icon="ios"></ion-spinner>                  
         <ion-list ng-show="!loading">
             <ion-item ng-repeat="item in searchResults" class="item item-avatar" ui-sref="menu.serviceDetails({id: item.id})">
                 <img style="border-radius: 0px;" ng-src="{{getServiceIconPath(item.socialID)}}">
