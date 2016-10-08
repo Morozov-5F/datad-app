@@ -1,38 +1,25 @@
 const app = angular.module('app');
 
-app.controller('SearchResultsController', function ($scope, $stateParams, Users) {
-    console.log(JSON.parse($stateParams.fields));
-    let randomPrice = () => (Math.floor(Math.random() * 120) + 25) * 10;
-    $scope.searchResults = [
-        {
-            id: 1,
-            name: 'Test Dunno Name',
-            service: 'youtube',
-            price: randomPrice(),
-            description: 'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit'
-        },
-        {
-            id: 2,
-            name: 'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit',
-            service: 'youtube',
-            price: randomPrice(),
-            description: 'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit'
-        },
-        {
-            id: 3,
-            name: 'Name',
-            service: 'instagram',
-            price: randomPrice(),
-            description: 'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit'
-        },
-        {
-            id: 4,
-            name: 'Da',
-            service: 'vk',
-            price: randomPrice(),
-            description: 'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit'
-        }                          
-    ];
+app.controller('SearchResultsController', function ($scope, $stateParams, Services, Users, Providers) {
+    let searchParams = {};
+    try {
+        searchParams = JSON.parse($stateParams.fields);
+    } catch (e) {
+        console.log(e);
+    }
 
-    $scope.getServiceIconPath = (service, size) => 'assets/img/service_icons/' + service + '-colored.png';
+    const serviceNames = [
+        'youtube',
+        'vk',
+        'instagram'
+    ];
+    Providers.get(searchParams)
+        .then((result) => $scope.searchResults = result.data.users)
+        .finally(() => $scope.loading = false);
+
+    let randomPrice = () => (Math.floor(Math.random() * 120) + 25) * 10;
+    $scope.searchResults = [];
+    $scope.loading = true;
+    $scope.getServiceName = (socialID) => serviceNames[socialID - 1]; 
+    $scope.getServiceIconPath = (socialID, size) => 'assets/img/service_icons/' + $scope.getServiceName(socialID) + '-colored.png';
 });

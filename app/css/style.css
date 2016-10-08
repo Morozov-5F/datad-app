@@ -14,10 +14,6 @@
     background-image: none !important;
 }
 
-.search-button {
-    font-size: 42pt;
-}
-
 .search-service-icon-unchecked {
     opacity: 0.25;
     transition: opacity .25s ease-in-out;
@@ -56,6 +52,7 @@
 .slider {
   height: 100%;
 }
+
 .slider-slide {
   padding-top: 80px;
   color: #000;
@@ -64,4 +61,12 @@
 
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
   font-weight: 300;
+}
+
+.spinner-center {
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  height: 85px;
+  text-align: center;
 }

@@ -1,7 +1,7 @@
 const app = angular.module('app');
 
 app.factory('Users', function ($http, $q) {
-    let accessToken;
+    let accessToken = '';
 
     // users.get
     let get = (limit, after) => $http({
@@ -39,17 +39,20 @@ app.factory('Users', function ($http, $q) {
                 accessToken = result.data.access_token;
                 defer.resolve(result);
             } else {
-                defer.reject({ error: 'Failed to get access token '});
+                defer.reject(result);
             }
         }, (result) => defer.reject(result));
 
         return defer.promise;
     };
 
+    let getAccessToken = () => accessToken;
+
     return {
         get,
         getByID,
         register,
-        login
+        login,
+        getAccessToken
     };
 });
