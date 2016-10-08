@@ -4,10 +4,14 @@
     background: none;
 }
 
-/*.search-bar-footer {
+.search-bar-footer {
     height: 60px;
 }
-*/
+
+.search-button {
+    font-size: 42pt;
+}
+
 .search-service-icon-unchecked {
     opacity: 0.25;
     transition: opacity .25s ease-in-out;

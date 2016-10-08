@@ -1,6 +1,6 @@
 const app = angular.module('app');
 
-app.controller('SearchResultsController', function ($scope, $stateParams) {
+app.controller('SearchResultsController', function ($scope, $stateParams, Users) {
     console.log(JSON.parse($stateParams.fields));
     let randomPrice = () => (Math.floor(Math.random() * 75) + 25) * 1000;
     $scope.searchResults = [

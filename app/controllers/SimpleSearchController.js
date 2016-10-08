@@ -1,6 +1,17 @@
 const app = angular.module('app');
 
-app.controller('SimpleSearchController', function ($scope, $log) {
+app.controller('SimpleSearchController', function ($scope, $log, Users) {
+    // Users.login('bredikhin.nikita@sas.pisas', '1234567')
+        
+    //     .then((result) => {
+    //         console.log('Login success');
+
+    //         return Users.get();
+    //     })
+
+    //     .then((result) => {
+    //         console.log(result);
+    //     });
     $scope.categories = [
         {
             name : "Game"
@@ -54,6 +65,5 @@ app.controller('SimpleSearchController', function ($scope, $log) {
     };
     $scope.toggleServiceIcon = (index) => {
         $scope.services[index].checked = !$scope.services[index].checked;
-
     };
 });
