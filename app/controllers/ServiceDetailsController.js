@@ -9,6 +9,6 @@ app.controller('ServiceDetailsController', function ($scope, $stateParams) {
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sem augue, laoreet ut lorem ut, malesuada ultricies sapien.',
         subscribers: '120k',
         posts: '1k',
-        service: 'Youtube',
+        service: 'Youtube'
     };
 });

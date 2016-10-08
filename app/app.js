@@ -13,9 +13,19 @@ app.run(function($ionicPlatform) {
 });
 
 app.config(function($httpProvider, $stateProvider, $urlRouterProvider) {
+    const notFirstStart = window.localStorage.getItem('notFirstStart');
+    const startupPage = (notFirstStart) ? '/side-menu/search' : '/intro';
+
     $httpProvider.defaults.headers = { 
         'Content-Type': undefined 
     };
+
+    $stateProvider
+        .state('intro', {
+            url: '/intro',
+            templateUrl: 'templates/tutorial.html',
+            controller: 'TutorialController'
+        })
 
     $stateProvider
         .state('menu.simpleSearch', {
@@ -74,5 +84,5 @@ app.config(function($httpProvider, $stateProvider, $urlRouterProvider) {
             }
         })
 
-    $urlRouterProvider.otherwise('/side-menu/search')
+    $urlRouterProvider.otherwise(startupPage)
 });

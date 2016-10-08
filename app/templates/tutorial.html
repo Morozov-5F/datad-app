@@ -1,0 +1,37 @@
+<ion-view title="Tutorial" hide-nav-bar="true">
+    <ion-content padding="true" class="no-header" scroll="false">
+            <ion-slide-box on-slide-changed="slideChanged(index)">
+                <ion-slide>
+                    <h3>Some text here</h3>
+                    <div id="logo">
+                        <img class="tutorial-image" src="assets/img/logo.png">
+                    </div>
+                    <p>
+                        Some additional text here
+                    </p>
+                </ion-slide>
+                <ion-slide>
+                    <h3>Some text here too!</h3>
+                    <div id="logo" class="center">
+                        <img class="tutorial-image" src="assets/img/logo.png">
+                    </div>
+                    <p>
+                        Oooh, so much text in this app!
+                    </p>
+                </ion-slide>
+                <ion-slide>
+                    <h3>Here you go!</h3>
+                    <div id="logo" class="center">
+                        <img class="tutorial-image" src="assets/img/logo.png">
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <button class="button button-outline button-calm" ui-sref="menu.simpleSearch()" ng-click="start()">
+                        Start
+                    </button>
+                </ion-slide>
+            </ion-slide-box>
+    </ion-content>
+</ion-view>
