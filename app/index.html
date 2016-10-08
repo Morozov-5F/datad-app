@@ -11,20 +11,41 @@
       <link href="style.css" rel="stylesheet">
 
       <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+      <style type="text/css">
+      .platform-ios .manual-ios-statusbar-padding{
+        padding-top:20px;
+      }
+      .manual-remove-top-padding{
+        padding-top:0px; 
+      }
+      .manual-remove-top-padding .scroll{
+        padding-top:0px !important;
+      }
+      ion-list.manual-list-fullwidth div.list, .list.card.manual-card-fullwidth {
+        margin-left:-10px;
+        margin-right:-10px;
+      }
+      ion-list.manual-list-fullwidth div.list > .item, .list.card.manual-card-fullwidth > .item {
+        border-radius:0px;
+        border-left:0px;
+        border-right: 0px;
+      }
+      </style>
+
       <!-- cordova script (this will be a 404 during development) -->
       <script src="cordova.js"></script>
       <script src="app.js"></script>
    </head>
 
-   <body ng-app="app" ng-controller="AppController">
-      <ion-pane>
-         <ion-header-bar class="bar-stable">
-            <h1 class="title">Ionic Template Project</h1>
-         </ion-header-bar>
-         <ion-content>
-            <h1>Title</h1>
-            {{ testMessage }}
-         </ion-content>
-      </ion-pane>
-   </body>
+  <body ng-app="app" animation="slide-left-right-ios7">
+    <div>
+        <div>
+            <ion-nav-bar class="bar-stable">
+                <ion-nav-back-button></ion-nav-back-button>
+            </ion-nav-bar>
+            <ion-nav-view></ion-nav-view>
+        </div>
+    </div>
+  </body>
 </html>
