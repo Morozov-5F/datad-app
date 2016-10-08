@@ -57,7 +57,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
   })
 
   .state('menu.searchResults', {
-    url: '/search_results',
+    url: '/search_results?fields',
     views: {
       'side-menu21': {
         templateUrl: 'templates/searchResults.html',
@@ -78,6 +78,5 @@ app.config(function($stateProvider, $urlRouterProvider) {
 
 $urlRouterProvider.otherwise('/side-menu/search')
 
-  
 
 });
