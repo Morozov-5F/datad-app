@@ -1,13 +1,14 @@
-<ion-view title="{{ profile.nickname }}" id="page5">
-    <ion-content padding="true" class="has-header">
+ <ion-view title="{{ profile.nickname }}" id="page5">
+    <img class="bg" ng-src="{{ profile.img }}">
+    <ion-content padding="true" class="has-header">        
         <div class="card">
             <div class="item item-avatar">
                 <img ng-src="{{ profile.img }}">
                 <h2>{{ profile.nickname }}</h2>
-                <p>{{ profile.service }} profile</p>
+                <p>{{ profile.service }} channel</p>
             </div>
-            <div class="item item-text-wrap item-borderless">
-                {{ profile.description }}
+            <div class="item item-text-wrap item-borderless">            
+                {{ profile.description }}                
             </div>
         </div>    
         <div class="card">
@@ -22,5 +23,28 @@
                 </div>
             </div>
         </div>
+        <div class="card">
+            <div class="row row-center">
+                <div class="col center">
+                    <p>Average price</p>
+                    <h3> ${{profile.price}}</h3>
+                </div>
+            </div>
+        </div>        
+        <div class="card">
+            <div class="row row-center">
+                <div class="col center">
+                    <p>Contact</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="button-bar">
+                    <a class="button button-light">Profile</a>
+                    <a class="button button-light">Email</a>
+                    <a class="button button-light">Call</a>
+                </div>                     
+            </div>            
+        </div>
+
     </ion-content>
 </ion-view>
