@@ -14,16 +14,16 @@ app.controller('SimpleSearchController', function ($scope, $log, Users) {
     //     });
     $scope.categories = [
         {
-            name : "Game"
+            name : "Gaming"
         },
         {
-            name : "Software"
+            name : "Tech"
         },
         {
-            name : "Food"
+            name : "Cooking & Health"
         },
         {
-            name : "Clothes"
+            name : "Beauty & Fashion"
         },
     ];
     $scope.services =  [
