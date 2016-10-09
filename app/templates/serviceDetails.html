@@ -1,7 +1,7 @@
- <ion-view title="{{ profile.nickname }}" id="page5">    
+ <ion-view title="{{ profile.name }}" id="page5">    
     <ion-spinner ng-show="loading" class="spinner-center" icon="ios"></ion-spinner> 
 
-    <img ng-show="!loading" class="bg" ng-src="{{ profile.img }}">
+    <img ng-show="!loading" class="bg" ng-src="{{ profile.avatar }}">
     <ion-content ng-show="!loading" padding="true" class="has-header">        
         <div class="card">
             <div class="item item-avatar">
