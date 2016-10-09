@@ -59,7 +59,7 @@ function insert($table,$array){
 	
 	query('INSERT INTO `'.$table.'` SET '.array_to_query($array,','));	
 	
-	$res['insert_id'] = $mysqli->insert_id;
+	$res['id'] = $mysqli->insert_id;
 	$res['error'] = $mysqli->error;
 	
 	return $res;
@@ -67,7 +67,7 @@ function insert($table,$array){
 
 function update_or_insert($table,$array){
 	global $mysqli;
-	query('INSERT `'.$table.'` SET '.array_to_query($array,',').' ON DUPLICATE KEY UPDATE '.$q);	
+	query('INSERT `'.$table.'` SET '.array_to_query($array,','));	
 	return $mysqli->insert_id;
 }
 
