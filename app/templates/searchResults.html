@@ -11,6 +11,7 @@
                     <option value='price'>Price</option>
                     <option value='name'>Name</option>
                     <option value='serviceID'>Service</option>
+                    <option value='-subscribers'>Subscribers</option>
                 </select>
             </label>        
             <label class="item item-input">
@@ -22,7 +23,12 @@
             <ion-item ng-repeat="item in searchResults | keywords: searchTerms | limitTo: 25 | orderBy: orderField" class="item item-avatar item-borderless" ui-sref="menu.serviceDetails({id: item.id})">
                 <img style="border-radius: 0px;" ng-src="{{getServiceIconPath(item.socialID)}}">
                 <h2 ng-bind="item.name"></h2>
-                <p>Avg. price: <span class="positive">${{item.price}}</p>                    
+                <p style="font-size: 9pt;">
+                    <b>Price:</b>
+                    <span class="positive">${{item.price}} </span>&nbsp;
+                    <i style="color: #777;" class="icon ion-person-stalker"></i> 
+                    <span class="positive">{{cropValue(item.subscribers)}}</span>
+                </p>                    
             </ion-item>
         </ion-list>
     </ion-content>

@@ -1,7 +1,5 @@
  <ion-view title="Profile" id="page5">    
     <ion-spinner ng-show="loading" class="spinner-center spinner-calm" icon="lines"></ion-spinner> 
-
-    <!-- <img ng-show="!loading" class="bg" ng-src="{{ profile.avatar }}"> -->
     <ion-content ng-show="!loading" padding="false" class="has-header"> 
         <div class="item item-thumbnail-left" style="border: none; margin-top: 8px;">
             <img ng-src="{{ profile.avatar }}" style="border-radius: 50%;">
@@ -10,14 +8,6 @@
             <p>Ads price: <b>${{profile.price }}</b></p>
             <img ng-src="assets/img/service_icons/{{images[profile.socialID]}}.png" class="img-overlay">
         </div>     
-        <!-- <div class="row" style="background-color: #11c1f3; height: 20px; border-bottom: 1px solid #0a9dc7">
-            <div class="col col-left" style="padding: 0 0 0 0;">
-                <div class="button button-full button-calm"><i class="icon ion-person-stalker"></i> {{cropValue(profile.subscribers)}}</div>
-            </div>
-            <div class="col col-right" style="padding: 0 0 0 0;">
-                <div class="button button-full button-calm"><i class="icon ion-ios-compose"></i> {{cropValue(profile.posts)}}</div>
-            </div>
-        </div> -->
         <div class="button-bar" style="height: 50px;">
             <button class="button button-calm button-full" style="border-radius: 0px; border-top: 1px solid #0a9dc7; border-bottom: 1px solid #0a9dc7;">
                <i class="icon ion-person-stalker"></i> {{cropValue(profile.subscribers)}}

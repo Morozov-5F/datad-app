@@ -25,6 +25,7 @@ app.controller('SearchResultsController', function ($scope, $stateParams, Servic
             $scope.searchResults = [];
             angular.forEach(result.data.users, user => {
                 user.price = parseInt(user.price);
+                user.subscribers = parseInt(user.subscribers);
                 $scope.searchResults.push(user);
             });; 
         })
@@ -40,4 +41,21 @@ app.controller('SearchResultsController', function ($scope, $stateParams, Servic
     $scope.loading = true;
     $scope.getServiceName = (socialID) => serviceNames[socialID - 1]; 
     $scope.getServiceIconPath = (socialID, size) => 'assets/img/service_icons/' + $scope.getServiceName(socialID) + '-colored.png';
+
+    $scope.cropValue = (val) => {
+        let res = '';
+        if (val >= 1e+6)
+        {
+            res = Math.round(Math.floor(val / 1e+5)) / 10 + 'M';
+        }
+        else if (val >= 1e+3)
+        {
+            res = Math.round(val / 1e+2) / 10 + 'k';
+        }
+        else
+        {
+            res = Math.floor(val);
+        }
+        return res;
+    };
 });
