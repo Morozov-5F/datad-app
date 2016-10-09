@@ -24,7 +24,7 @@
 	
 	
 	function checkToken($token) {
-		$user = select("SELECT * FROM `users` WHERE `access_token` LIKE '".$token."'");
+		$user = selectrow("SELECT * FROM `users` WHERE `access_token` LIKE '".$token."' LIMIT 1");
 		
 		if (!$user) {
 			$res['error'] = 'Invalid access_token!';

@@ -58,8 +58,11 @@ function insert($table,$array){
 	global $mysqli;
 	
 	query('INSERT INTO `'.$table.'` SET '.array_to_query($array,','));	
-
-	return $mysqli->insert_id;
+	
+	$res['insert_id'] = $mysqli->insert_id;
+	$res['error'] = $mysqli->error;
+	
+	return $res;
 }
 
 function update_or_insert($table,$array){
@@ -83,8 +86,6 @@ function db_unblock () {
 	$mysqli->autocommit(true);
 }
 
-
-
 function antisqlinj ($i) {
 	global $mysqli;
 	return $mysqli->real_escape_string($i);
@@ -92,9 +93,13 @@ function antisqlinj ($i) {
 
 
 function array_to_query($array,$del = ' AND '){
-	foreach($array as $k=>$r)
+	global $mysqli;
+	
+	foreach($array as $k=>$r) {
+		$r = mysqli_real_escape_string($mysqli, $r);
 		$q[]="`".$k."`='".$r."'";	
-
+	}
+	
 	return implode($del,$q);
 }
 
