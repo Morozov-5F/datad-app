@@ -27,6 +27,13 @@ app.controller('ServiceDetailsController', function ($scope, $stateParams, Provi
         '2' : 'https://vk.com/'
     }
 
+    $scope.images = [
+        '',
+        'youtube-colored',
+        'vk-colored',
+        'instagram-colored'
+    ]
+
     Providers.getByID($stateParams.id)
         .then((result) => {
             if (result.data && result.data.users && result.data.users[0])

@@ -5,10 +5,11 @@
     <!-- <img ng-show="!loading" class="bg" ng-src="{{ profile.avatar }}"> -->
     <ion-content ng-show="!loading" padding="false" class="has-header">  
         <div class="item item-thumbnail-left" style="border-bottom: 1px solid #0a9dc7">
-            <img ng-src="{{ profile.avatar }}" style="border-radius: 50%">
+            <img ng-src="{{ profile.avatar }}" style="border-radius: 50%;">
             <h2 style="font-size: 20pt;">{{ profile.name }}</h2>
             <p>{{ getSocialName(profile.socialID) }}</p>
             <p>Ads price: <b>${{profile.price }}</b></p>
+            <img ng-src="assets/img/service_icons/{{images[profile.socialID]}}.png" class="img-overlay">
         </div>     
         <div class="row" style="background-color: #11c1f3; height: 70px; border-bottom: 1px solid #0a9dc7">
             <div class="col col-left" style="padding: 0 0 0 0;">

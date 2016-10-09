@@ -87,3 +87,13 @@ hr.light {
 * {
   font-family: 'Roboto', sans-serif;
 }
+
+.img-overlay {
+  max-width:20px; 
+  transform: translateY(-50%); 
+  position: absolute; 
+  display: inline-block; 
+  top: 50%; 
+  left: 80px; 
+  box-shadow: 0px 0px 5px #888888;
+}
