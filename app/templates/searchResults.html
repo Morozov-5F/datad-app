@@ -1,4 +1,5 @@
-<ion-view title="Search results" id="page4">   
+<ion-view id="page4">   
+    <ion-nav-title><span ng-show="!loading">Found {{searchResults.length}} profiles</span></ion-nav-title>
     <ion-content padding="false" class="has-header">
         <ion-spinner class="spinner-center" ng-show="loading" icon="ios"></ion-spinner>                  
         <ion-list ng-show="!loading">

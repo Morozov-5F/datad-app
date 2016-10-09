@@ -1,6 +1,7 @@
 const app = angular.module('app');
 
 app.controller('ServiceDetailsController', function ($scope, $stateParams, Providers) {
+    $scope.loading = true;
     $scope.cropValue = (val) => {
         let res = '';
         if (val >= 1e+6)
@@ -27,7 +28,8 @@ app.controller('ServiceDetailsController', function ($scope, $stateParams, Provi
             if ($scope.profile.description.length > 100) 
                 $scope.profile.description = $scope.profile.description.slice(0, 110) + '...';
             
-        });
+        })
+        .finally(() => $scope.loading = false );
     $scope.profile = {};
 
     let socialNames = [
