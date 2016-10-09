@@ -70,3 +70,15 @@
   height: 85px;
   text-align: center;
 }
+
+hr.light {
+  color: #DDD; 
+}
+
+.title-gtfo {
+  font-size: 120pt;
+}
+
+* {
+  font-family: 'Roboto', sans-serif;
+}
