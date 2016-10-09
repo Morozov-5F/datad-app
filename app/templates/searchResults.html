@@ -1,9 +1,25 @@
 <ion-view view-title="" id="page4">   
     <ion-nav-title><span ng-show="!loading">Found {{searchResults.length}} profiles</span></ion-nav-title>
     <ion-spinner class="spinner-center spinner-calm" ng-show="loading" icon="lines"></ion-spinner>   
-    <ion-content padding="false" class="has-header">               
+    <ion-content padding="false" class="has-header">  
+        <div class="item">
+            <label class="item item-input item-select">
+                <div class="input-label">
+                    Sort by
+                </div>
+                <select ng-model="orderField">
+                    <option value='price'>Price</option>
+                    <option value='name'>Name</option>
+                    <option value='serviceID'>Service</option>
+                </select>
+            </label>        
+            <label class="item item-input">
+                <span class="input-label">Keywords</span>
+                <input type="text" ng-model="searchTerms" placeholder="Search keywords">
+            </label>
+        </div>             
         <ion-list ng-show="!loading">
-            <ion-item ng-repeat="item in searchResults | limitTo: 25 | orderBy: 'price'" class="item item-avatar" ui-sref="menu.serviceDetails({id: item.id})">
+            <ion-item ng-repeat="item in searchResults | keywords: searchTerms | limitTo: 25 | orderBy: orderField" class="item item-avatar" ui-sref="menu.serviceDetails({id: item.id})">
                 <img style="border-radius: 0px;" ng-src="{{getServiceIconPath(item.socialID)}}">
                 <h2 ng-bind="item.name"></h2>
                 <p>Avg. price: <span class="positive">${{item.price}}</p>                    
