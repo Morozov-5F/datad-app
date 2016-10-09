@@ -46,8 +46,9 @@ app.controller('ServiceDetailsController', function ($scope, $stateParams, Provi
         
         if ($scope.showAllDescription)
             $scope.visibleDescription = $scope.profile.description;
-        else
-            $scope.visibleDescription = $scope.profile.description.slice(0, 75) + '...';
+        else {
+            $scope.visibleDescription = $scope.profile.description.length > 75 ? $scope.profile.description.slice(0, 75) + '...' : $scope.profile.description;
+        }
     };
 
     $scope.openLink = (url) => {

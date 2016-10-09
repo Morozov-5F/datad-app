@@ -24,9 +24,10 @@
                 <p class="calm"><b>Description</b></p>
                 {{ visibleDescription }}
                 <br>
-                <button class="button button-clear button-stable" ng-click="toggleVisibleDescription()">
+                <button ng-show="profile.description.length > 75" class="button button-clear button-stable" ng-click="toggleVisibleDescription()">
                     {{showAllDescription ? 'Show less' : 'Show more'}}
-                </button>                
+                </button>       
+                <br ng-show="profile.description.length <= 75">         
             </div>
         </div>
         <div class="row" style="height: 68px; background-color: #f8f8f8; border-top: 1px solid; border-bottom: 1px solid; border-color: #DDD;">

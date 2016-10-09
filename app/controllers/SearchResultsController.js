@@ -7,6 +7,7 @@ app.controller('SearchResultsController', function ($scope, $stateParams, Servic
     } catch (e) {
         
     }
+    searchParams.limit = 50;
     const serviceNames = [
         'youtube',
         'vk',
