@@ -1,6 +1,6 @@
 const app = angular.module('app');
 
-app.controller('SearchResultsController', function ($scope, $stateParams, Services, Users, Providers) {
+app.controller('SearchResultsController', function ($scope, $stateParams, Services, Users, Providers, $ionicPopup) {
     let searchParams = {};
     try {
         searchParams = JSON.parse($stateParams.fields);
@@ -29,7 +29,10 @@ app.controller('SearchResultsController', function ($scope, $stateParams, Servic
                 $scope.searchResults.push(user);
             });; 
         })
-        .catch(error => console.log(error))
+        .catch(error => $ionicPopup.alert({
+            title: 'Connection error',
+            template: 'Failed to connect to the server'
+        }))
         .finally(() => $scope.loading = false);
 
 

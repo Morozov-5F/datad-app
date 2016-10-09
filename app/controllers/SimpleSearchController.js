@@ -1,10 +1,16 @@
 const app = angular.module('app');
 
-app.controller('SimpleSearchController', function ($scope, $log, Categories) {
+app.controller('SimpleSearchController', function ($scope, $log, Categories, $ionicPopup) {
     Categories.get()
-        .then((result) => {            
+        .then(result => {            
             $scope.categories = result.data.categories;
-        });    
+        })
+        .catch(err => {
+            $ionicPopup.alert({
+                title: 'Connection error',
+                template: 'Failed to connect to the server'
+            });
+        });
     $scope.categories = [];
     $scope.services =  [
         {

@@ -1,6 +1,6 @@
 const app = angular.module('app');
 
-app.controller('ServiceDetailsController', function ($scope, $stateParams, Providers) {
+app.controller('ServiceDetailsController', function ($scope, $stateParams, Providers, $ionicPopup) {
     $scope.loading = true;
     $scope.visibleDescription = '...';
     $scope.showAllDescription = true;
@@ -75,6 +75,10 @@ app.controller('ServiceDetailsController', function ($scope, $stateParams, Provi
             }
             $scope.toggleVisibleDescription();
         })
+        .catch(error => $ionicPopup.alert({
+            title: 'Connection error',
+            template: 'Failed to connect to the server'
+        }))        
         .finally(() => $scope.loading = false );
     $scope.profile = {};
 
