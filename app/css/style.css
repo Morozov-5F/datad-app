@@ -1,0 +1,103 @@
+/* Custom styles */
+
+.header-transparent {
+    background: none;
+}
+
+.search-bar-footer {
+    height: 80px;
+    border: none;
+    border: 0px;
+    border-color: transparent;
+    border-top: transparent;
+    border-bottom: transparent;
+    background-image: none !important;
+}
+
+.search-service-icon-unchecked {
+    opacity: 0.25;
+    transition: opacity .25s ease-in-out;
+}
+
+.search-service-icon-checked {
+    opacity: 1;
+    transition: opacity .25s ease-in-out;
+}
+
+.search-service-icon {
+    width: 90px;
+    display: inline;
+    padding: 14px;
+}
+
+.search-icons-wrapper {
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, 0%);
+    position: relative;
+}
+
+.center {
+  width: 100%;
+  text-align: center;
+}
+
+.tutorial-image {
+    max-width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.slider {
+  height: 100%;
+}
+
+.slider-slide {
+  padding-top: 80px;
+  color: #000;
+  background-color: #fff;
+  text-align: center;
+
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+  font-weight: 300;
+}
+
+.spinner-center {
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  height: 85px;
+  text-align: center;
+}
+
+.spinner svg {
+  width: 19% !important;
+  height: 85px !important;
+}
+
+hr.light {
+  color: #DDD; 
+}
+
+.title-gtfo {
+  font-size: 120pt;
+}
+
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
+.bar-opaque {
+  opacity: 0.5;
+}
+
+.img-overlay {
+  max-width:20px; 
+  transform: translateY(-50%); 
+  position: absolute; 
+  display: inline-block;
+  top: 50%; 
+  left: 80px; 
+  box-shadow: 0px 0px 5px #888888;
+}

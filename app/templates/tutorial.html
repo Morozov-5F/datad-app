@@ -1,0 +1,49 @@
+<ion-view title="Tutorial" hide-nav-bar="true">
+    <ion-content padding="true" class="no-header" scroll="false">
+            <ion-slide-box on-slide-changed="slideChanged(index)">
+                <ion-slide>
+                    <h3>Your ads in the right place</h3>
+                    <br>
+                    <div id="logo">
+                        <img class="tutorial-image" src="assets/img/tutorial-1.png">
+                    </div>
+                    <br>
+                    <br>
+                    <p>
+                        DatAd allows you to promote your products really easy
+                    </p>
+                </ion-slide>
+                <ion-slide>
+                    <h3>Find best social platforms</h3>
+                    <br>
+                    <div id="logo" class="center">
+                        <img class="tutorial-image" src="assets/img/tutorial-2.png">
+                    </div>
+                    <br>
+                    <br>
+                    <p>
+                        Select a category and choose desired platforms. DatAd will find promoters for you!
+                    </p>
+                </ion-slide>
+                <ion-slide>
+                    <h3>Here you go!</h3>
+                    <br>
+                    <br>
+                    <div id="logo" class="center">
+                        <img class="tutorial-image" src="assets/img/logo.png">
+                    </div>
+                    
+                    
+                    <br>
+                    <br>
+                    <div class="row">
+                    <div class="col col-center col-offset-10 col-80">
+                    <button style="border-radius: 20px;" class="button button-block button-calm" ui-sref="menu.simpleSearch()" ng-click="start()">
+                        Start using DatAd!
+                    </button>
+                    </div>
+                    </div>
+                </ion-slide>
+            </ion-slide-box>
+    </ion-content>
+</ion-view>

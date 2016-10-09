@@ -1,0 +1,47 @@
+<ion-view title="Search" id="page1">
+    <ion-content padding="true" class="has-header" scroll="false">
+        <div class="item item-divider item-borderless header-transparent" style="color: #BBB">
+            Select category
+        </div>
+        <div class="row">
+            <div class="col">
+                <label class="item item-input item-select" id="simpleSearch-select1">
+                    <span class="input-label"><i class="icon ion-social-buffer" style="color: #999"></i> Category</span>
+                    <select ng-model="searchFields.category">
+                        <option value={{category.id}} ng-repeat="category in categories">{{ category.name }}</option>
+                    </select>
+                </label>
+            </div>
+        </div>
+        <br>
+        <div class="item item-divider item-borderless header-transparent" style="color: #BBB">
+            Select maximum price
+        </div>
+        <div class="item range range-calm item-borderless">
+            <i class="icon ion-social-usd" style="color: #BBB"></i>
+            <input type="range" name="price" step="100" min="0" max="15000" ng-model="searchFields.price">
+            <span style="font-size: 13pt; color: #BBB">${{searchFields.price}}</span>
+        </div>
+        <br>
+        <div class="item item-divider item-borderless header-transparent" style="color: #BBB">
+            Pick services
+        </div>
+        <div class="item range range-calm item-borderless">
+            <div class="search-icons-wrapper">
+                <img 
+                    ng-repeat="service in services" 
+                    ng-class="getServiceIconClass(service)" 
+                    ng-click="toggleServiceIcon($index)"
+                    ng-src="assets/img/service_icons/{{service.name}}-colored.png">
+            </div>
+        </div>
+    </ion-content>
+
+    <div class="bar bar-footer bar-light search-bar-footer item-borderless">
+        <div class="row">
+        <div class="col col-center col-offset-20 col-60">
+        <button style="font-size: 14pt; border-radius: 20px;" class="button button-block button-calm" ui-sref="menu.searchResults({fields:getFieldsString()})" id="simpleSearch-button2">Search</button>
+        </div>
+        </div>
+    </div>
+</ion-view>
