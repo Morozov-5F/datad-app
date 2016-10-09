@@ -2,86 +2,49 @@
     <ion-spinner ng-show="loading" class="spinner-center spinner-calm" icon="lines"></ion-spinner> 
 
     <!-- <img ng-show="!loading" class="bg" ng-src="{{ profile.avatar }}"> -->
-    <ion-content ng-show="!loading" padding="false" class="has-header">  
-        <div class="item item-thumbnail-left" style="border-bottom: 1px solid #0a9dc7">
+    <ion-content ng-show="!loading" padding="false" class="has-header"> 
+        <div class="item item-thumbnail-left" style="border: none; margin-top: 8px;">
             <img ng-src="{{ profile.avatar }}" style="border-radius: 50%;">
             <h2 style="font-size: 20pt;">{{ profile.name }}</h2>
             <p>{{ getSocialName(profile.socialID) }}</p>
             <p>Ads price: <b>${{profile.price }}</b></p>
             <img ng-src="assets/img/service_icons/{{images[profile.socialID]}}.png" class="img-overlay">
         </div>     
-        <div class="row" style="background-color: #11c1f3; height: 70px; border-bottom: 1px solid #0a9dc7">
+        <!-- <div class="row" style="background-color: #11c1f3; height: 20px; border-bottom: 1px solid #0a9dc7">
             <div class="col col-left" style="padding: 0 0 0 0;">
                 <div class="button button-full button-calm"><i class="icon ion-person-stalker"></i> {{cropValue(profile.subscribers)}}</div>
             </div>
             <div class="col col-right" style="padding: 0 0 0 0;">
                 <div class="button button-full button-calm"><i class="icon ion-ios-compose"></i> {{cropValue(profile.posts)}}</div>
             </div>
-        </div>
+        </div> -->
+        <div class="button-bar" style="height: 50px;">
+            <button class="button button-calm button-full" style="border-radius: 0px; border-top: 1px solid #0a9dc7; border-bottom: 1px solid #0a9dc7;">
+               <i class="icon ion-person-stalker"></i> {{cropValue(profile.subscribers)}}
+            </button>
+            <button class="button button-calm button-full" style="border-radius: 0px; border-top: 1px solid #0a9dc7; border-bottom: 1px solid #0a9dc7;">
+                <i class="icon ion-ios-compose"></i> {{cropValue(profile.posts)}}
+            </button>
+        </div>        
         <div class="row">
             <div class="col">
                 <br>
                 <p class="calm"><b>Description</b></p>
                 {{ visibleDescription }}
                 <br>
-                <button ng-show="profile.description.length > 75" class="button button-clear button-stable" ng-click="toggleVisibleDescription()">
+                <button ng-show="profile.description.length > 75" class="button button-clear button-stable" ng-click="toggleVisibleDescription()" style="margin-bottom: -17px;">
                     {{showAllDescription ? 'Show less' : 'Show more'}}
                 </button>       
                 <br ng-show="profile.description.length <= 75">         
             </div>
         </div>
-        <div class="row" style="height: 68px; background-color: #f8f8f8; border-top: 1px solid; border-bottom: 1px solid; border-color: #DDD;">
-            <div class="col col-left" style="padding: 0 0 0 0;">
-                <button ng-click="openLink(profile.url)" class="button button-full button-basic"><i class="icon ion-ios-person"></i> Open profile</button>
-            </div>
-            <div class="col col-right" style="padding: 0 0 0 0;">
-                <button class="button button-full button-basic"><i class="icon ion-at"></i> Send email</button>
-            </div>
-        </div>        
-<!--         <div class="card">
-            <div class="item item-avatar">
-                <img ng-src="{{ profile.avatar }}">
-                <h2>{{ profile.name }}</h2>
-                <p>{{ getSocialName(profile.socialID) }}</p>
-            </div>
-            <div class="item item-text-wrap item-borderless">            
-                {{ profile.description }}                
-            </div>
-        </div>    
-        <div class="card">
-            <div class="row row-center">
-                <div class="col center">
-                    <p>Subscribers</p>
-                    <h3> {{cropValue(profile.subscribers)}} </h3>
-                </div>
-                <div class="col center">
-                    <p>Posts</p>
-                    <h3> {{cropValue(profile.posts)}} </h3>
-                </div>
-            </div>
-        </div>
-        <div class="card">
-            <div class="row row-center">
-                <div class="col center">
-                    <p>Average price</p>
-                    <h3> ${{profile.price}}</h3>
-                </div>
-            </div>
-        </div>        
-        <div class="card">
-            <div class="row row-center">
-                <div class="col center">
-                    <p>Contact</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="button-bar">
-                    <a class="button button-light" ng-click="openLink(profile.url)">Profile</a>
-                    <a class="button button-light">Email</a>
-                    <a class="button button-light">Call</a>
-                </div>                     
-            </div>            
-        </div>
- -->
+        <div class="button-bar" style="height: 50px;">
+            <button ng-click="openLink(profile.url)" class="button button-basic button-full" style="border-radius: 0px; border-top: 1px solid #DDD; border-bottom: 1px solid #DDD;">
+               <i class="icon ion-ios-person"></i> Open profile
+            </button>
+            <button class="button button-basic button-full" style="border-radius: 0px; border-top: 1px solid #DDD; border-bottom: 1px solid #DDD;">
+                <i class="icon ion-at"></i> Send email
+            </button>
+        </div>  
     </ion-content>
 </ion-view>

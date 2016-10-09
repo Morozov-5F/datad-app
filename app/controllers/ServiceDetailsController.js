@@ -40,8 +40,14 @@ app.controller('ServiceDetailsController', function ($scope, $stateParams, Provi
                 $scope.profile = result.data.users[0];
             
             $scope.profile.url = $scope.urls[$scope.profile.socialID] + $scope.profile.profileID;
-
-            $scope.profile.description = decodeURIComponent($scope.profile.description);
+            if (!$scope.profile.avatar || $scope.profile.avatar === "") {
+                $scope.profile.avatar = "assets/img/avatar-placeholder.png";
+            }  
+            if ($scope.profile.description && $scope.profile.description !== '') {
+                $scope.profile.description = decodeURIComponent($scope.profile.description);
+            } else {
+                $scope.profile.description = 'No description';
+            }
             $scope.toggleVisibleDescription();
         })
         .finally(() => $scope.loading = false );
