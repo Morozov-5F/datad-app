@@ -17,19 +17,39 @@
 	// 7 - access_token не найден
 	// 8
 	
+	
+	# Можно сделать массив errors
+	$errors = [
+		1	=>	[
+			'info'=>'не правильный запрос (нету api/)',
+			'info_en'=>'invalid request (don\'t found api/)'
+		],
+	];
+	
 	//echo '<pre>';
 	//print_r(json_encode($_SERVER['REQUEST_METHOD']));
 	//echo json_encode($_POST);
 	//print_r($_GET['q']);asdasd
 	
+	
 	function checkToken($token) {
+		# Проверка токена типа preg_match("/(0-9a-f){32}/");
+		
 		$user = selectrow("SELECT * FROM `users` WHERE `access_token` LIKE '".$token."' LIMIT 1");
 		
 		if (!$user) {
+			# К res лучше обращатся один раз
+			$res = [
+				'error'=>'Invalid access_token!',
+				'error_code'=>7,
+			];
+/*
 			$res['error'] = 'Invalid access_token!';
 			$res['error_code'] = 7;
-			
-			header('Content-Type: application/json; charset=utf-8');
+*/
+
+			# Не нужно т.к. мы и так передаем уже выше
+// 			header('Content-Type: application/json; charset=utf-8');
 			print_r(json_encode($res));
 			exit;
 		}
@@ -37,9 +57,15 @@
 		return $user;
 	}
 	preg_match("#api/(.*)#", $_GET['q'], $matches);
-	if (empty($matches)) { echo 'error 1'; exit; }
+	if (empty($matches)) { 
+		# Желательно выводить ошибку в json
+		$res['error_code'] = 1;
+// 		echo 'error 1'; exit; 
+	}
 	
 	$headers = getallheaders();
+	
+	# Вместо $_GET['q'] можно использовать $matches[1] и не писать в case api/
 	switch ($_GET['q']) {
 	# Метод для регистрации аккаунта
 		case 'api/register': 
@@ -128,6 +154,7 @@
 		
 		# Метод для получения списка пользователей
 		case 'api/users.get':
+/*
 			if (!isset($headers['X-Access-Token'])) { 
 				$res['error'] = 'Invalid access_token!';
 				$res['error_code'] = 7;
@@ -137,6 +164,7 @@
 			}
 		
 			checkToken($headers['X-Access-Token']);
+*/
 		
 			if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 				$limit = 100; //дефолтный лимит
@@ -162,6 +190,7 @@
 			
 		# Метод для получения пользователя по id
 		case 'api/users.getByID': 
+/*
 			if (!isset($headers['X-Access-Token'])) { 
 				$res['error'] = 'Invalid access_token!';
 				$res['error_code'] = 7;
@@ -171,6 +200,7 @@
 			}
 		
 			checkToken($headers['X-Access-Token']);
+*/
 			if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 				if (!isset($_GET['ids'])) { 
 					$res['error'] = 'BAD_PARAMETERS';
@@ -192,6 +222,7 @@
 		
 		# Метод для получения providers
 		case 'api/providers.get': 
+/*
 			if (!isset($headers['X-Access-Token'])) { 
 				$res['error'] = 'Invalid access_token!';
 				$res['error_code'] = 7;
@@ -201,6 +232,7 @@
 			}
 		
 			checkToken($headers['X-Access-Token']);
+*/
 			
 			if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 				$limit = 100; //дефолтный лимит
@@ -226,6 +258,7 @@
 
 		# Метод для поиска providers
 		case 'api/providers.search': 
+		/*
 			if (!isset($headers['X-Access-Token'])) { 
 				$res['error'] = 'Invalid access_token!';
 				$res['error_code'] = 7;
@@ -235,7 +268,8 @@
 			}
 		
 			checkToken($headers['X-Access-Token']);
-		
+			*/
+
 			if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 				$cat_id = '';
 				$socialID = '';
@@ -287,6 +321,7 @@
 		
 		# Метод для получения провайдера по id
 		case 'api/providers.getByID': 
+/*
 			if (!isset($headers['X-Access-Token'])) { 
 				$res['error'] = 'Invalid access_token!';
 				$res['error_code'] = 7;
@@ -296,7 +331,7 @@
 			}
 		
 			checkToken($headers['X-Access-Token']);
-			
+*/
 			if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 				if (!isset($_GET['ids'])) { 
 					$res['error'] = 'BAD_PARAMETERS';
@@ -318,16 +353,17 @@
 
 		# Метод для получения категорий
 		case 'api/getCategories': 
-			if (!isset($headers['X-Access-Token'])) { 
-				$res['error'] = 'Invalid access_token!';
-				$res['error_code'] = 7;
-				
-				print_r(json_encode($res));
-				exit;
-			}
-		
-			checkToken($headers['X-Access-Token']);
+			/*
+				if (!isset($headers['X-Access-Token'])) { 
+					$res['error'] = 'Invalid access_token!';
+					$res['error_code'] = 7;
+					
+					print_r(json_encode($res));
+					exit;
+				}
 			
+				checkToken($headers['X-Access-Token']);
+			*/
 			if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 				$cats = select("SELECT * FROM `category`");
 			
@@ -341,16 +377,17 @@
 		
 		# Метод для получения пользователя по id
 		case 'api/getSocials': 
-			if (!isset($headers['X-Access-Token'])) { 
-				$res['error'] = 'Invalid access_token!';
-				$res['error_code'] = 7;
-				
-				print_r(json_encode($res));
-				exit;
-			}
-		
-			checkToken($headers['X-Access-Token']);
+			/*
+				if (!isset($headers['X-Access-Token'])) { 
+					$res['error'] = 'Invalid access_token!';
+					$res['error_code'] = 7;
+					
+					print_r(json_encode($res));
+					exit;
+				}
 			
+				checkToken($headers['X-Access-Token']);
+			*/
 			if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 				$socials = select("SELECT * FROM `socials`");
 			
@@ -361,95 +398,7 @@
 		    }
 		    else { echo 'error: 2'; }
 		break;	
-		
-		# Метод для добавления provide в избранное
-		case 'api/favorites.set': 
-			if (!isset($headers['X-Access-Token'])) { 
-				$res['error'] = 'Invalid access_token!';
-				$res['error_code'] = 7;
-				
-				print_r(json_encode($res));
-				exit;
-			}
-		
-			$user = checkToken($headers['X-Access-Token']);
-			
-			if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-				$data = json_decode(file_get_contents("php://input"), true);
-				
-				if (!isset($data['providerID'])) {
-					$res['error'] = 'BAD_PARAMETERS';
-					$res['error_code'] = 4; 
-					
-					print_r(json_encode($res));
-					
-					exit;
-				}
-				
-				$favorite = selectrow("SELECT * FROM `favorites` WHERE `userID` = ".$user['id']." AND `providerID` = ".$data['providerID']." LIMIT 1");
-				
-				if (!$favorite) {
-					$code = insert('favorites', ['userID' => $user['id'], 'providerID' => $data['providerID']])['id'];
-					
-					if ($code != 0) { $res['result'] = 'Success: favorites add'; $res['id'] = $code; }
-					else { $res['result'] = 'ERROR_ADD_TO_DB'; }
-				}
-				else {
-					query("DELETE FROM `favorites` WHERE `id` = ".$favorite['id']);
-					$res['result'] = 'Success: favorites delete';
-					$res['id'] = $favorite['id'];
-				}
-				
-				print_r(json_encode($res));
-		    }
-		    else { echo 'error: 2'; }
-		break;	
 
-		# Метод для получения списка избранного
-		case 'api/favorites.getList': 
-			if (!isset($headers['X-Access-Token'])) { 
-				$res['error'] = 'Invalid access_token!';
-				$res['error_code'] = 7;
-				
-				print_r(json_encode($res));
-				exit;
-			}
-		
-			$user = checkToken($headers['X-Access-Token']);
-			
-			if ($_SERVER['REQUEST_METHOD'] == 'GET') {				
-				$favorites = select("SELECT * FROM `favorites` WHERE `userID` = ".$user['id']);
-				
-				$res['count'] = count($favorites);
-				$res['favorites'] = $favorites;
-				
-				print_r(json_encode($res));
-		    }
-		    else { echo 'error: 2'; }
-		break;	
-		
-		# Метод для получения инфы является ли provider избранным
-		case 'api/providers.isFavorite': 
-			if (!isset($headers['X-Access-Token'])) { 
-				$res['error'] = 'Invalid access_token!';
-				$res['error_code'] = 7;
-				
-				print_r(json_encode($res));
-				exit;
-			}
-		
-			$user = checkToken($headers['X-Access-Token']);
-			
-			if ($_SERVER['REQUEST_METHOD'] == 'GET') {				
-				$favorite = selectrow("SELECT * FROM `favorites` WHERE `userID` = ".$user['id']." AND `providerID` = ".$_GET['providerID']." LIMIT 1");
-				
-				if (!$favorite) { $res['isFavorite'] = 0; }
-				else { $res['isFavorite'] = 1; }
-				
-				print_r(json_encode($res));
-		    }
-		    else { echo 'error: 2'; }
-		break;	
 			
 		default: echo 'error: -1';
 	}

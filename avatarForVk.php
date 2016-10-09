@@ -13,19 +13,22 @@
 	$page = $curl->makerequest();
 	$headers = $curl->getanswerHeader();
 	
-	print_r($headers);
+	//print_r($headers);
 	preg_match_all('#<meta name="description" content="(.*)" />#', $page, $descr);	
 	preg_match_all('#<img class="page_avatar_img" src="(.*)" alt=#', $page, $img);
 	
 	if (empty($descr[1][0])) {
-		preg_match_all('#<div class="page_current_info" id="page_current_info"><span class="current_text">(.*)</span></div>#', $page, $descr);	
+		preg_match_all('#<div class="page_current_info" id="page_current_info"><span class="current_text">(.*)</span></div>#', $page, $descr);
+		if (empty($descr[1][0])) { $descr[1][0] = '---'; }
 	}
-	if (empty($descr[1][0])) { $descr[1][0] = ''; }
+	if (empty($descr[1][0])) { $descr[1][0] = '---'; }
 	 
-	//print_r(iconv('windows-1251','utf-8',$descr[1][0]));
+	print_r(iconv('windows-1251','utf-8',$descr[1][0]));
  	echo '<br/>';
-	//print_r($img);
+	print_r($img[1][0]);
 	
-	//update('providers', ['avatar' => $img[1][0], 'description' => iconv('windows-1251','utf-8',$descr[1][0])], ['id' => $provider['id']]);
+	update('providers', ['avatar' => $img[1][0], 'description' => iconv('windows-1251','utf-8',$descr[1][0])], ['id' => $provider['id']]);
+	
+	echo '<br/><br/>Осталось получить иконок: '.selectRow("SELECT COUNT(*) FROM `providers` WHERE `socialID` = 2 AND `description` = ''")['COUNT(*)'];
 	
 ?>
