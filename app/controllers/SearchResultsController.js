@@ -12,7 +12,9 @@ app.controller('SearchResultsController', function ($scope, $stateParams, Servic
         'vk',
         'instagram'
     ];
-
+    $scope.random = function() {
+        return 0.5 - Math.random();
+    }
     $scope.searchResults = [];
     $scope.totalResultsCount = 0;
     Providers.search(searchParams)
