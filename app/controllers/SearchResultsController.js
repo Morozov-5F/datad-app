@@ -21,14 +21,19 @@ app.controller('SearchResultsController', function ($scope, $stateParams, Servic
     $scope.searchResults = [];
     $scope.totalResultsCount = 0;
     Providers.search(searchParams)
-        .then((result) => $scope.searchResults = result.data.users)
-        .catch((error) => console.log(error))
+        .then(result => {
+            $scope.searchResults = [];
+            angular.forEach(result.data.users, user => {
+                user.price = parseInt(user.price);
+                $scope.searchResults.push(user);
+            });; 
+        })
+        .catch(error => console.log(error))
         .finally(() => $scope.loading = false);
 
 
     $scope.$watch('searchResults', () => {
         $scope.totalResultsCount = $scope.searchResults.length;
-        console.log($scope.searchResults.length, $scope.totalResultsCount);
     });
 
     let randomPrice = () => (Math.floor(Math.random() * 120) + 25) * 10;
