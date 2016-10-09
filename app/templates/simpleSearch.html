@@ -1,29 +1,32 @@
 <ion-view title="Simple search" id="page1">
     <ion-content padding="true" class="has-header" scroll="false">
-        <div class="item item-divider item-borderless header-transparent">
+        <div class="item item-divider item-borderless header-transparent" style="color: #BBB">
             Select category
         </div>
-        <label class="item item-input item-select" id="simpleSearch-select1">
-            <span class="input-label">Category</span>
-            <select ng-model="searchFields.category">
-                <option value={{category.id}} ng-repeat="category in categories">{{ category.name }}</option>
-            </select>
-        </label>
-        <br>
-        <div class="item item-divider item-borderless header-transparent">
-            Choose maximum price
-        </div>
-        <div class="item range range-calm">
-            <input type="range" name="price" step="100" min="0" max="10000" ng-model="searchFields.price">
-            <div class="col col-25">
-                <p>${{ searchFields.price }}</p>
+        <div class="row">
+            <div class="col">
+                <label class="item item-input item-select" id="simpleSearch-select1">
+                    <span class="input-label">Category</span>
+                    <select ng-model="searchFields.category">
+                        <option value={{category.id}} ng-repeat="category in categories">{{ category.name }}</option>
+                    </select>
+                </label>
             </div>
         </div>
         <br>
-        <div class="item item-divider item-borderless header-transparent">
+        <div class="item item-divider item-borderless header-transparent" style="color: #BBB">
+            Select maximum price
+        </div>
+        <div class="item range range-calm item-borderless">
+            <i class="icon ion-social-usd" style="color: #BBB"></i>
+            <input type="range" name="price" step="100" min="0" max="10000" ng-model="searchFields.price">
+            <span style="font-size: 10pt; color: #BBB">${{searchFields.price}}</span>
+        </div>
+        <br>
+        <div class="item item-divider item-borderless header-transparent" style="color: #BBB">
             Pick services
         </div>
-        <div class="item range range-calm">
+        <div class="item range range-calm item-borderless">
             <div class="search-icons-wrapper">
                 <img 
                     ng-repeat="service in services" 
