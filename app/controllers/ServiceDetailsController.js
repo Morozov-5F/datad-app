@@ -2,6 +2,9 @@ const app = angular.module('app');
 
 app.controller('ServiceDetailsController', function ($scope, $stateParams, Providers) {
     $scope.loading = true;
+    $scope.visibleDescription = '...';
+    $scope.showAllDescription = true;
+
     $scope.cropValue = (val) => {
         let res = '';
         if (val >= 1e+6)
@@ -32,12 +35,20 @@ app.controller('ServiceDetailsController', function ($scope, $stateParams, Provi
             $scope.profile.url = $scope.urls[$scope.profile.socialID] + $scope.profile.profileID;
 
             $scope.profile.description = decodeURIComponent($scope.profile.description);
-            if ($scope.profile.description.length > 100) 
-                $scope.profile.description = $scope.profile.description.slice(0, 110) + '...';
-            
+            $scope.toggleVisibleDescription();
         })
         .finally(() => $scope.loading = false );
     $scope.profile = {};
+
+    $scope.toggleVisibleDescription = () => {
+        $scope.showAllDescription = !$scope.showAllDescription;
+
+        
+        if ($scope.showAllDescription)
+            $scope.visibleDescription = $scope.profile.description;
+        else
+            $scope.visibleDescription = $scope.profile.description.slice(0, 75) + '...';
+    };
 
     $scope.openLink = (url) => {
         window.open(url, '_system', 'location=yes')
