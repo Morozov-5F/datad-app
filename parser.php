@@ -1,42 +1,25 @@
 <?php
-	require './support/curl.php';
-
-	$url = 'https://m.vk.com/login';
+	require './support/vk.php';
 	
+	$login = 'morozov5f@gmail.com';
+	$password = 'm0r0Z0V';
+	
+// 	echo vk_auth($login, $password, 8450);
+	
+
 	$curl = new CurlBasic();
- 	$curl->url("https://m.vk.com/login");
+ 	$curl->url("https://vk.com/exchange?act=community_search");
+ 	$curl->setArray([
+	 	'cookiefile' => './_temp/'.md5($login.$password),
+	// 	'postdata' => 'age=&al=1&cache=1&category=0&city=&cost_to=&country=&load=1&offset=20&preach=&q=&r=0&reach=&sex=0&size
+//=&sort='
+ 	]);
+
 	$page = $curl->makerequest();
+	$headers = $curl->getanswerHeader();
 	
-	preg_match_all('#<form method="post" action="(.*)" novalidate>#', $page, $link);
 	
-	print_r($link);
-
-	
-/*
-
-	$ch = curl_init($url);
-	curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1)");
-	curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-	curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-	        'accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*//*;q=0.8',
-	        'content-type: application/x-www-form-urlencoded',
-	        'origin: http://vk.com',
-	        'referer: http://vk.com/',
-	));
-	curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
-	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
-	curl_setopt($ch, CURLOPT_COOKIEJAR, 'cookie.txt');
-	curl_setopt($ch, CURLOPT_COOKIEFILE, 'cookie.txt'); 
-
-	$content = curl_exec($ch);
-*/
-	
-	//preg_match_all("/name=\"ip_h\" value=\"(.*?)\" \\//s", $content, $ip_h);
-//	preg_match_all("/name=\"lg_h\" value=\"(.*?)\" \\//s", $content, $lg_h);
-	
-// 	print_r($content);
 	
 // 	print_r($page);
-
+	print_r($headers);	
 ?>

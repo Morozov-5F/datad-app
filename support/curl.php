@@ -115,6 +115,10 @@ Class CurlBasic {
 				curl_setopt($this->ch, CURLOPT_POST, 1);
 				curl_setopt($this->ch, CURLOPT_POSTFIELDS, $this->p['postdata']);
 			}
+			
+			if (isset($this->p['post'])) {
+				curl_setopt($this->ch, CURLOPT_POST, 1);
+			}
 			  
 			# Если есть файл с куками от туда читаем и туда же пишем
 			if(isset($this->p['cookiefile'])){
