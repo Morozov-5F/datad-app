@@ -1,4 +1,4 @@
- <ion-view id="page5">    
+ <ion-view title="" id="page5">    
     <ion-nav-title>{{ profile.name }}'s profile</ion-nav-title>
     <ion-spinner ng-show="loading" class="spinner-center" icon="ios"></ion-spinner> 
 
@@ -42,7 +42,7 @@
             </div>
             <div class="row">
                 <div class="button-bar">
-                    <a class="button button-light">Profile</a>
+                    <a class="button button-light" ng-click="openLink(profile.url)">Profile</a>
                     <a class="button button-light">Email</a>
                     <a class="button button-light">Call</a>
                 </div>                     

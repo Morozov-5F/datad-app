@@ -19,10 +19,17 @@ app.controller('ServiceDetailsController', function ($scope, $stateParams, Provi
         return res;
     };
     
+    $scope.urls = {
+        '1' : 'https://www.youtube.com/channel/',
+        '2' : 'https://vk.com/'
+    }
+
     Providers.getByID($stateParams.id)
         .then((result) => {
             if (result.data && result.data.users && result.data.users[0])
                 $scope.profile = result.data.users[0];
+            
+            $scope.profile.url = $scope.urls[$scope.profile.socialID] + $scope.profile.profileID;
 
             $scope.profile.description = decodeURIComponent($scope.profile.description);
             if ($scope.profile.description.length > 100) 
@@ -31,6 +38,10 @@ app.controller('ServiceDetailsController', function ($scope, $stateParams, Provi
         })
         .finally(() => $scope.loading = false );
     $scope.profile = {};
+
+    $scope.openLink = (url) => {
+        window.open(url, '_system', 'location=yes')
+    }
 
     let socialNames = [
         'YouTube channel',
