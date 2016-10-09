@@ -5,6 +5,30 @@ app.controller('ServiceDetailsController', function ($scope, $stateParams, Provi
     $scope.visibleDescription = '...';
     $scope.showAllDescription = true;
 
+    $scope.labels = ['','','','','','',''];
+    $scope.series = ['Series A', 'Series B'];
+    $scope.data = [
+        [65, 59, 80, 81, 56, 55, 40],
+        [28, 48, 40, 19, 86, 27, 90]
+    ];
+    $scope.colors = ['#11c1f3', '#11c1f3', '#11c1f3'];
+    $scope.options = {
+        scales: {
+            xAxes: [{
+                display: false,
+                gridLines: [{
+                    display: true,
+                    
+                }]
+            }],
+            yAxes: [{
+                display: false,
+                gridLines: [{
+                    display: true,
+                }]
+            }]
+        }
+    }
     $scope.cropValue = (val) => {
         let res = '';
         if (val >= 1e+6)
@@ -24,7 +48,8 @@ app.controller('ServiceDetailsController', function ($scope, $stateParams, Provi
     
     $scope.urls = {
         '1' : 'https://www.youtube.com/channel/',
-        '2' : 'https://vk.com/'
+        '2' : 'https://vk.com/',
+        '3' : 'https://www.instagram.com/'
     }
 
     $scope.images = [
@@ -74,4 +99,5 @@ app.controller('ServiceDetailsController', function ($scope, $stateParams, Provi
         'Instagram profile'        
     ];
     $scope.getSocialName = (id) => socialNames[parseInt(id) - 1];
+    
 });
