@@ -5,14 +5,14 @@ app.controller('SearchResultsController', function ($scope, $stateParams, Servic
     try {
         searchParams = JSON.parse($stateParams.fields);
     } catch (e) {
-        console.log(e);
+        
     }
     const serviceNames = [
         'youtube',
         'vk',
         'instagram'
     ];
-    
+
     Providers.search(searchParams)
         .then((result) => $scope.searchResults = result.data.users)
         .catch((error) => console.log(error))
