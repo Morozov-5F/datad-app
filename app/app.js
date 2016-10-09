@@ -14,7 +14,7 @@ app.run(function($ionicPlatform) {
 
 app.config(function($httpProvider, $stateProvider, $urlRouterProvider) {
     const notFirstStart = window.localStorage.getItem('notFirstStart');
-    const startupPage = (notFirstStart) ? '/side-menu/search' : '/intro';
+    const startupPage = '/intro'; //(notFirstStart) ? '/side-menu/search' : '/intro';
 
     $httpProvider.defaults.headers = { 
         'Content-Type': undefined 
