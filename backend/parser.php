@@ -1,8 +1,8 @@
 <?php
 	require './support/vk.php';
 	
-	$login = 'morozov5f@gmail.com';
-	$password = 'm0r0Z0V';
+	$login = 'example@example.com';
+	$password = 'strong_password';
 	
 // 	echo vk_auth($login, $password, 8450);
 	
